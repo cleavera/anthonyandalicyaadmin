@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Api, Model } from '@skimp/client';
+import { Api } from '@skimp/client';
 import { MODEL_REGISTER, ResourceLocation } from '@skimp/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
 import { Observable, Subject } from 'rxjs';

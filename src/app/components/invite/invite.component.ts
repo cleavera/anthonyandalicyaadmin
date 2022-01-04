@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
 
 @Component({
@@ -9,4 +9,18 @@ import { InviteSchema } from 'anthony-and-alicya-domain';
 export class InviteComponent {
     @Input()
     public invite!: InviteSchema;
+
+    @Output()
+    public edit: EventEmitter<void> = new EventEmitter<void>();
+
+    @Output()
+    public remove: EventEmitter<void> = new EventEmitter<void>();
+
+    public onEdit(): void {
+        this.edit.emit();
+    }
+
+    public onRemove(): void {
+        this.remove.emit();
+    }
 }

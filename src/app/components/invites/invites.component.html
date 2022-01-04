@@ -1,9 +1,9 @@
 <ul *ngIf="invites">
     <li *ngFor="let invite of invites">
-        <aa-invite [invite]="invite"></aa-invite>
+        <aa-invite [invite]="invite" (edit)="onEdit(invite)"></aa-invite>
     </li>
 </ul>
 
 <button (click)="onAdd()">Add new invite</button>
 
-<aa-manage-invite *ngIf="createModel" [invite]="createModel"></aa-manage-invite>
+<aa-manage-invite *ngIf="managingModel" [invite]="managingModel" (close)="onClose()"></aa-manage-invite>

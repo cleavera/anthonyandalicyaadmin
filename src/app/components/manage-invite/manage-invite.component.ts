@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InviteSchema, InviteTypes } from 'anthony-and-alicya-domain';
+
 import { InviteService } from '../../services/invite.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class ManageInviteComponent {
 
     @Input()
     public invite!: InviteSchema;
+
+    @Output()
+    public close: EventEmitter<void> = new EventEmitter<void>();
 
     private _inviteService: InviteService;
 
@@ -46,5 +50,7 @@ export class ManageInviteComponent {
         event.preventDefault();
 
         await this._inviteService.save(this.invite);
+
+        this.close.emit();
     }
 }

@@ -9,7 +9,7 @@ import { InviteService } from '../../services/invite.service';
     templateUrl: './invites.component.html'
 })
 export class InvitesComponent implements OnInit {
-    public createModel: InviteSchema | null = null;
+    public managingModel: InviteSchema | null = null;
     public invites: Array<InviteSchema> | null = null;
     private _invitesService: InviteService;
 
@@ -26,6 +26,14 @@ export class InvitesComponent implements OnInit {
     }
 
     public onAdd(): void {
-        this.createModel = this._invitesService.blank();
+        this.managingModel = this._invitesService.blank();
+    }
+
+    public onEdit(invite: InviteSchema): void {
+        this.managingModel = invite;
+    }
+
+    public onClose(): void {
+        this.managingModel = null;
     }
 }
