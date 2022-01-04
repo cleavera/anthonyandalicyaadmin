@@ -33,6 +33,14 @@ export class InvitesComponent implements OnInit {
         this.managingModel = invite;
     }
 
+    public async onRemove(invite: InviteSchema): Promise<void> {
+        if (!confirm('Are you sure you want to remove this, it cannot be undone?')) {
+            return;
+        }
+
+        await this._invitesService.remove(invite);
+    }
+
     public onClose(): void {
         this.managingModel = null;
     }

@@ -9,7 +9,7 @@ import { API_TOKEN } from '../providers/api/api.token';
 
 @Injectable()
 export class GuestService implements RepositoryInterface<GuestSchema> {
-    private _guestSubjects: Record<string, Subject<GuestSchema>>;
+    private _guestSubjects: Record<string, Subject<GuestSchema | null>>;
     private _listSubject: Subject<Array<GuestSchema>>;
     private _api: Api;
 
@@ -23,7 +23,7 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         return this._listSubject.asObservable();
     }
 
-    public get(location: ResourceLocation): Observable<GuestSchema> {
+    public get(location: ResourceLocation): Observable<GuestSchema | null> {
         return this._get(location).asObservable();
     }
 
@@ -35,9 +35,9 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         this._get(location).next(await this._api.get(GuestSchema, location));
     }
 
-    private _get(location: ResourceLocation): Subject<GuestSchema> {
+    private _get(location: ResourceLocation): Subject<GuestSchema | null> {
         if (this._guestSubjects[location.toString()]) {
-            this._guestSubjects[location.toString()] = new Subject<GuestSchema>();
+            this._guestSubjects[location.toString()] = new Subject<GuestSchema | null>();
         }
 
         return this._guestSubjects[location.toString()];

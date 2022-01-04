@@ -9,7 +9,7 @@ import { API_TOKEN } from '../providers/api/api.token';
 
 @Injectable()
 export class InviteService implements RepositoryInterface<InviteSchema> {
-    private _inviteSubjects: Record<string, Subject<InviteSchema>>;
+    private _inviteSubjects: Record<string, Subject<InviteSchema | null>>;
     private _listSubject: Subject<Array<InviteSchema>>;
     private _api: Api;
 
@@ -23,7 +23,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
         return this._listSubject.asObservable();
     }
 
-    public get(location: ResourceLocation): Observable<InviteSchema> {
+    public get(location: ResourceLocation): Observable<InviteSchema | null> {
         return this._get(location).asObservable();
     }
 
@@ -44,7 +44,19 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
         }
 
         await this.load(location);
+        await this.loadAll();
+    }
 
+    public async remove(invite: InviteSchema): Promise<void> {
+        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(invite);
+
+        if (location === null) {
+            throw new Error(`No location for invite ${invite.inviteNumber}`);
+        }
+
+        await this._api.remove(location);
+
+        await this._get(location).next(null);
         await this.loadAll();
     }
 
@@ -62,9 +74,9 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
         return Math.floor(Math.random() * 900000) + 100000;
     }
 
-    private _get(location: ResourceLocation): Subject<InviteSchema> {
+    private _get(location: ResourceLocation): Subject<InviteSchema | null> {
         if (!this._inviteSubjects[location.toString()]) {
-            this._inviteSubjects[location.toString()] = new Subject<InviteSchema>();
+            this._inviteSubjects[location.toString()] = new Subject<InviteSchema | null>();
         }
 
         return this._inviteSubjects[location.toString()];
