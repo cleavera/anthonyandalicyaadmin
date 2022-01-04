@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
+
 import { InviteService } from '../../services/invite.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { InviteService } from '../../services/invite.service';
     templateUrl: './invites.component.html'
 })
 export class InvitesComponent implements OnInit {
+    public createModel: InviteSchema | null = null;
     public invites: Array<InviteSchema> | null = null;
-
     private _invitesService: InviteService;
 
     constructor(invitesService: InviteService) {
@@ -22,5 +23,9 @@ export class InvitesComponent implements OnInit {
         });
 
         await this._invitesService.loadAll();
+    }
+
+    public onAdd(): void {
+        this.createModel = this._invitesService.blank();
     }
 }

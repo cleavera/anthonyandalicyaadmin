@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './components/app/app.component';
+import { ManageInviteComponent } from './components/create-invite/manage-invite.component';
 import { InviteComponent } from './components/invite/invite.component';
 import { InvitesComponent } from './components/invites/invites.component';
 import { LineComponent } from './components/line/line.component';
@@ -17,7 +18,8 @@ import { InviteService } from './services/invite.service';
         InvitesComponent,
         LineComponent,
         PageComponent,
-        TopBarComponent
+        TopBarComponent,
+        ManageInviteComponent
     ],
     imports: [
         BrowserModule

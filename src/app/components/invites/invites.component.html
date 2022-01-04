@@ -3,3 +3,7 @@
         <aa-invite [invite]="invite"></aa-invite>
     </li>
 </ul>
+
+<button (click)="onAdd()">Add new invite</button>
+
+<aa-manage-invite *ngIf="createModel" [invite]="createModel"></aa-manage-invite>
