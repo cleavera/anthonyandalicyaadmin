@@ -1,0 +1,39 @@
+:host {
+  background: var(--color-card);
+  box-shadow: 0 5px 10px var(--color-shadow);
+  display: flex;
+  padding: 10px 0;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("/assets/bg.jpg");
+    background-size: cover;
+    mix-blend-mode: soft-light;
+  }
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0 20px;
+}
+
+.title {
+  color: var(--color-font-title);
+  font-family: var(--fontFamily-title);
+  font-size: 1.5rem;
+  flex: 0 0 auto;
+  margin: 0 20px;
+}
+
+.line {
+  flex: 0 1 100px;
+  margin: 0;
+}
