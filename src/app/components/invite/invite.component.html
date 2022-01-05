@@ -1,7 +1,7 @@
 {{invite.inviteNumber}} - {{invite.type}}
 
 <button (click)="onEdit()">Edit</button>
-<button (click)="onRemove()">Remove</button>
+<button (click)="onRemove()" [disabled]="((guests$ | async)?.length ?? 0) > 0">Remove</button>
 <button (click)="onAddGuest()">Add guest</button>
 
 <ng-container *ngIf="(guests$ | async) as guests">
