@@ -1,0 +1,8 @@
+<div>
+    <label [for]="id">{{label}}</label>
+
+    <select [name]="id" [id]="id" (input)="onInput($event)" [required]="required">
+        <option></option>
+        <option *ngFor="let option of options" [value]="option" [selected]="value === option">{{option}}</option>
+    </select>
+</div>

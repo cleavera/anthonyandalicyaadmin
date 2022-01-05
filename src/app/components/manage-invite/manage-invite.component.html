@@ -1,25 +1,8 @@
 <form (submit)="onSubmit($event)">
-    <div>
-        <label for="invite-inviteType">Invite type</label>
-
-        <select name="invite-inviteType" id="invite-inviteType" (input)="onTypeChange($event)" required>
-            <option></option>
-            <option *ngFor="let type of inviteTypes" [value]="type" [selected]="invite.type === type">{{type}}</option>
-        </select>
-    </div>
-
-    <div>
-        <label for="invite-number">Invite number</label>
-
-        <input name="invite-number" type="text" readonly id="invite-number" [value]="invite.inviteNumber" required />
-    </div>
-
-    <div>
-        <label for="invite-pin">Invite pin</label>
-
-        <input name="invite-pin" type="text" readonly id="invite-pin" [value]="invite.pin" required />
-        <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>
-    </div>
+    <aa-input-option label="Invite type" [required]="true" [value]="invite.type" [options]="inviteTypes" (valueChange)="invite.type = $event"></aa-input-option>
+    <aa-input-text label="Invite number" [required]="true" [readonly]="true" [value]="invite.inviteNumber.toString(10)"></aa-input-text>
+    <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
+    <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>
 
     <button type="submit">Save</button>
 </form>

@@ -20,6 +20,7 @@ export class InviteComponent {
     public remove: EventEmitter<void> = new EventEmitter<void>();
 
     public guests$!: Observable<Array<Observable<GuestSchema | null>>>;
+    public managingModel: GuestSchema | null = null;
     private _guestService: GuestService;
 
     constructor(guestService: GuestService) {
@@ -38,5 +39,13 @@ export class InviteComponent {
 
     public onRemove(): void {
         this.remove.emit();
+    }
+
+    public onAddGuest(): void {
+        this.managingModel = this._guestService.blank();
+    }
+
+    public onClose(): void {
+        this.managingModel = null;
     }
 }

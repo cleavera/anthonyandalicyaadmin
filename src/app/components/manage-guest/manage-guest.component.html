@@ -1,0 +1,9 @@
+<form (submit)="onSubmit($event)">
+    <aa-input-text [value]="guest.name" [required]="true" label="Name" (valueChange)="guest.name = $event"></aa-input-text>
+    <aa-input-option [value]="guest.starter" label="Starter" (valueChange)="guest.starter = $event" [options]="STARTERS"></aa-input-option>
+    <aa-input-option [value]="guest.main" label="Main" (valueChange)="guest.main = $event" [options]="MAINS"></aa-input-option>
+    <aa-input-option [value]="guest.dessert" label="Dessert" (valueChange)="guest.dessert = $event" [options]="DESSERTS"></aa-input-option>
+    <aa-input-text-area [value]="guest.comments" label="Comments" (valueChange)="guest.comments = $event"></aa-input-text-area>
+
+    <button type="submit">Save</button>
+</form>

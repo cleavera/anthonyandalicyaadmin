@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { GuestSchema } from 'anthony-and-alicya-domain';
 import { Observable } from 'rxjs';
 
@@ -10,4 +10,5 @@ import { Observable } from 'rxjs';
 export class GuestsComponent {
     @Input()
     public guests!: Array<Observable<GuestSchema | null>>;
+
 }

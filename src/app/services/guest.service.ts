@@ -1,11 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
 import { Api, Model } from '@skimp/client';
-import { ResourceLocation } from '@skimp/core';
+import { MODEL_REGISTER, ResourceLocation } from '@skimp/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { RepositoryInterface } from '../interfaces/repository.interface';
 import { API_TOKEN } from '../providers/api/api.token';
+import { InviteService } from './invite.service';
 
 @Injectable()
 export class GuestService implements RepositoryInterface<GuestSchema> {
@@ -13,9 +14,11 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
     private _guestInviteSubjects: Record<string, Subject<Array<Observable<GuestSchema | null>>>>;
     private _listSubject: Subject<Array<GuestSchema>>;
     private _api: Api;
+    private _inviteService: InviteService;
 
-    constructor(@Inject(API_TOKEN) api: Api) {
+    constructor(@Inject(API_TOKEN) api: Api, inviteService: InviteService) {
         this._api = api;
+        this._inviteService = inviteService;
         this._guestSubjects = {};
         this._listSubject = new BehaviorSubject<Array<GuestSchema>>([]);
         this._guestInviteSubjects = {};
@@ -58,6 +61,28 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         await Promise.all(guests.map((guestLocation: ResourceLocation): Promise<void> => {
             return this.load(guestLocation);
         }));
+    }
+
+    public blank(): GuestSchema {
+        return new GuestSchema();
+    }
+
+    public async save(guest: GuestSchema, invite: InviteSchema): Promise<void> {
+        Model.addRelationship(guest, invite);
+
+        guest = await this._api.save(guest);
+
+        Model.addRelationship(invite, guest);
+
+        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(guest);
+
+        if (location === null) {
+            throw new Error(`No location for guest ${guest.name}`);
+        }
+
+        await this.load(location);
+        await this.loadForInvite(invite);
+        await this.loadAll();
     }
 
     private _get(location: ResourceLocation): Subject<GuestSchema | null> {

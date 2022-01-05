@@ -32,10 +32,6 @@ export class ManageInviteComponent {
         }
     }
 
-    public onTypeChange(event: Event): void {
-        this.invite.type = (event.currentTarget as HTMLSelectElement).value;
-    }
-
     public onRegeneratePin(): void {
         const values = new Uint8Array(8);
 
