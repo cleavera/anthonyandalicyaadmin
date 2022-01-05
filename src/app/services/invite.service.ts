@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Api } from '@skimp/client';
 import { MODEL_REGISTER, ResourceLocation } from '@skimp/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 import { RepositoryInterface } from '../interfaces/repository.interface';
 import { API_TOKEN } from '../providers/api/api.token';
@@ -16,7 +16,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
     constructor(@Inject(API_TOKEN) api: Api) {
         this._api = api;
         this._inviteSubjects = {};
-        this._listSubject = new Subject<Array<InviteSchema>>();
+        this._listSubject = new BehaviorSubject<Array<InviteSchema>>([]);
     }
 
     public getAll(): Observable<Array<InviteSchema>> {
@@ -76,7 +76,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
 
     private _get(location: ResourceLocation): Subject<InviteSchema | null> {
         if (!this._inviteSubjects[location.toString()]) {
-            this._inviteSubjects[location.toString()] = new Subject<InviteSchema | null>();
+            this._inviteSubjects[location.toString()] = new BehaviorSubject<InviteSchema | null>(null);
         }
 
         return this._inviteSubjects[location.toString()];

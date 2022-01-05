@@ -2,3 +2,7 @@
 
 <button (click)="onEdit()">Edit</button>
 <button (click)="onRemove()">Remove</button>
+
+<ng-container *ngIf="(guests$ | async) as guests">
+    <aa-guests [guests]="guests"></aa-guests>
+</ng-container>

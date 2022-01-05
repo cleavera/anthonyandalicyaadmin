@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { InviteSchema } from 'anthony-and-alicya-domain';
+import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
+import { Observable } from 'rxjs';
+
+import { GuestService } from '../../services/guest.service';
 
 @Component({
     selector: 'aa-invite',
@@ -15,6 +18,19 @@ export class InviteComponent {
 
     @Output()
     public remove: EventEmitter<void> = new EventEmitter<void>();
+
+    public guests$!: Observable<Array<Observable<GuestSchema | null>>>;
+    private _guestService: GuestService;
+
+    constructor(guestService: GuestService) {
+        this._guestService = guestService;
+    }
+
+    public ngOnChanges(): void {
+        this.guests$ = this._guestService.getForInvite(this.invite);
+
+        this._guestService.loadForInvite(this.invite);
+    }
 
     public onEdit(): void {
         this.edit.emit();
