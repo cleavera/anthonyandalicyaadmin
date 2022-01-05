@@ -5,7 +5,7 @@
 <button (click)="onAddGuest()">Add guest</button>
 
 <ng-container *ngIf="(guests$ | async) as guests">
-    <aa-guests [guests]="guests"></aa-guests>
+    <aa-guests [guests]="guests" (edit)="onEditGuest($event)" (remove)="onRemoveGuest($event)"></aa-guests>
 </ng-container>
 
 <aa-manage-guest [invite]="invite" [guest]="managingModel" *ngIf="managingModel" (close)="onClose()"></aa-manage-guest>

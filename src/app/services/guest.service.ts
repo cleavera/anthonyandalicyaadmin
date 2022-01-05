@@ -85,6 +85,21 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         await this.loadAll();
     }
 
+    public async remove(guest: GuestSchema, invite: InviteSchema): Promise<void> {
+        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(guest);
+
+        if (location === null) {
+            throw new Error(`No location for guest ${guest.name}`);
+        }
+
+        await this._api.remove(location);
+        MODEL_REGISTER.removeRelationship(invite, location);
+
+        await this._get(location).next(null);
+        await this.loadForInvite(invite)
+        await this.loadAll();
+    }
+
     private _get(location: ResourceLocation): Subject<GuestSchema | null> {
         if (!this._guestSubjects[location.toString()]) {
             this._guestSubjects[location.toString()] = new BehaviorSubject<GuestSchema | null>(null);

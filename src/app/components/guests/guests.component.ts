@@ -11,4 +11,17 @@ export class GuestsComponent {
     @Input()
     public guests!: Array<Observable<GuestSchema | null>>;
 
+    @Output()
+    public edit: EventEmitter<GuestSchema> = new EventEmitter<GuestSchema>();
+
+    @Output()
+    public remove: EventEmitter<GuestSchema> = new EventEmitter<GuestSchema>();
+
+    public onEdit(guest: GuestSchema): void {
+        this.edit.emit(guest);
+    }
+
+    public onRemove(guest: GuestSchema): void {
+        this.remove.emit(guest);
+    }
 }

@@ -45,6 +45,14 @@ export class InviteComponent {
         this.managingModel = this._guestService.blank();
     }
 
+    public onEditGuest(guest: GuestSchema): void {
+        this.managingModel = guest;
+    }
+
+    public onRemoveGuest(guest: GuestSchema): void {
+        this._guestService.remove(guest, this.invite);
+    }
+
     public onClose(): void {
         this.managingModel = null;
     }
