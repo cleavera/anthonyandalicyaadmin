@@ -3,6 +3,9 @@
 </p>
 
 <aa-attending [attending]="guest.attending"></aa-attending>
+<aa-menu *ngIf="guest.attending" [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
+
+<p class="comments">{{guest.comments}}</p>
 
 <button (click)="onEdit()">Edit</button>
 <button (click)="onRemove()">Remove</button>
