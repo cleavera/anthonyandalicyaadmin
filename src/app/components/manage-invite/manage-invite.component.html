@@ -14,11 +14,11 @@
             [value]="invite.inviteNumber.toString(10)"></aa-input-text>
     <div class="field">
         <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
-        <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>
+        <aa-button class="action" label="Regenerate pin" (activate)="onRegeneratePin()"></aa-button>
     </div>
 
     <div class="actions">
-        <button type="submit">Save</button>
-        <button type="button" (click)="onCancel()">Cancel</button>
+        <aa-button class="action positive" label="Save" type="submit"></aa-button>
+        <aa-button class="action" label="Cancel" (activate)="onCancel()"></aa-button>
     </div>
 </form>

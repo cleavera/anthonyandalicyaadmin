@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './components/app/app.component';
 import { AttendingComponent } from './components/attending/attending.component';
+import { ButtonComponent } from './components/button/button.component';
 import { GuestComponent } from './components/guest/guest.component';
 import { GuestsComponent } from './components/guests/guests.component';
 import { InputBooleanComponent } from './components/input-boolean/input-boolean.component';
@@ -45,7 +46,8 @@ import { InviteService } from './services/invite.service';
         AttendingComponent,
         InputBooleanComponent,
         MenuComponent,
-        ModalComponent
+        ModalComponent,
+        ButtonComponent
     ],
     imports: [
         BrowserModule,

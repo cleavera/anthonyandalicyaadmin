@@ -1,3 +1,14 @@
-<p class="starter" *ngIf="starter">Starter: {{ starter | translate }}</p>
-<p class="main" *ngIf="main">Main: {{ main | translate }}</p>
-<p class="dessert" *ngIf="dessert">Dessert: {{ dessert | translate }}</p>
+<div class="item starter" *ngIf="starter">
+    <p class="label">Starter</p>
+    <p>{{ starter | translate }}</p>
+</div>
+
+<div class="item main" *ngIf="main">
+    <p class="label">Main</p>
+    <p>{{ main | translate }}</p>
+</div>
+
+<div class="item dessert" *ngIf="dessert">
+    <p class="label">Dessert</p>
+    <p>{{ dessert | translate }}</p>
+</div>

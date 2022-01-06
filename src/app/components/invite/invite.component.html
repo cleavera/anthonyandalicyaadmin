@@ -14,9 +14,9 @@
     </div>
 
     <div class="actions">
-        <button class="action" (click)="onEdit()">Edit</button>
-        <button class="action" (click)="onRemove()" [disabled]="((guests$ | async)?.length ?? 0) > 0">Remove</button>
-        <button class="action" (click)="onAddGuest()">Add guest</button>
+        <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
+        <aa-button class="action negative" label="Remove" [disabled]="((guests$ | async)?.length ?? 0) > 0" (activate)="onRemove()"></aa-button>
+        <aa-button class="action" label="Add guest" (activate)="onAddGuest()"></aa-button>
     </div>
 </div>
 

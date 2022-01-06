@@ -50,6 +50,10 @@ export class InviteComponent {
     }
 
     public onRemoveGuest(guest: GuestSchema): void {
+        if (!confirm('Are you sure you want to remove this, it cannot be undone?')) {
+            return;
+        }
+
         this._guestService.remove(guest, this.invite);
     }
 

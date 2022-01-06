@@ -39,9 +39,19 @@ summary {
       padding: 2rem;
     }
   }
+
+  .field {
+    & + & {
+      margin-top: 1rem;
+    }
+  }
 }
 
 .label,
 .comments {
   font-size: 0.8rem;
+}
+
+.menu {
+  text-align: center;
 }

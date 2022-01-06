@@ -1,0 +1,25 @@
+button {
+  background: var(--aa-button-color);
+  border: 1px solid var(--color-dividers);
+  border-radius: 0;
+  color: var(--aa-button-text);
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+:host {
+  --aa-button-color: var(--color-neutral);
+  --aa-button-text: var(--color-font);
+  display: block;
+
+  &.positive {
+    --aa-button-color: var(--color-positive);
+    --aa-button-text: var(--color-font--invert);
+  }
+
+  &.negative {
+    --aa-button-color: var(--color-negative);
+    --aa-button-text: var(--color-font--invert);
+  }
+}

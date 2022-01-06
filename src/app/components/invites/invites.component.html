@@ -1,10 +1,12 @@
+<div class="actions">
+    <aa-button label="Add new invite" (activate)="onAdd()"></aa-button>
+</div>
+
 <ul *ngIf="invites" class="invites">
     <li *ngFor="let invite of invites" class="invite">
         <aa-invite [invite]="invite" (edit)="onEdit(invite)" (remove)="onRemove(invite)"></aa-invite>
     </li>
 </ul>
-
-<button (click)="onAdd()">Add new invite</button>
 
 <aa-modal *ngIf="managingModel" >
     <aa-manage-invite [invite]="managingModel" (close)="onClose()"></aa-manage-invite>

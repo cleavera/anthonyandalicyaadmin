@@ -11,13 +11,13 @@
         </div>
 
         <div class="actions">
-            <button class="action" (click)="onEdit()">Edit</button>
-            <button class="action" (click)="onRemove()">Remove</button>
+            <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
+            <aa-button class="action negative" label="Remove" (activate)="onRemove()"></aa-button>
         </div>
     </summary>
 
     <div class="otherInfo">
-        <div class="field" *ngIf="guest.attending" >
+        <div class="field menu" *ngIf="guest.attending" >
             <aa-menu [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
         </div>
 
