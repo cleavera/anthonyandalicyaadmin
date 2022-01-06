@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Desserts, InviteTypes, Mains, Starters } from 'anthony-and-alicya-domain';
+import { Desserts, GuestTypes, Mains, Starters } from 'anthony-and-alicya-domain';
 
 @Pipe({
     name: 'translate'
 })
 export class TranslatePipe implements PipeTransform {
     public map: Record<string, string> = {
-        [InviteTypes.DAY]: 'Day',
-        [InviteTypes.EVENING]: 'Evening',
+        [GuestTypes.DAY]: 'Day',
+        [GuestTypes.EVENING]: 'Evening',
         [Starters.PORK]: 'Asian spiced confit belly pork, asian slaw, soy dressing',
         [Starters.TERRINE]: 'Coronation chicken terrine, mango salsa, toast',
         [Starters.GOATS_CHEESE]: 'Walnut crushed goats cheese terrine, rocket and balasmic salad',

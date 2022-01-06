@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { InviteSchema, InviteTypes } from 'anthony-and-alicya-domain';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { InviteSchema } from 'anthony-and-alicya-domain';
 
 import { InviteService } from '../../services/invite.service';
 
@@ -8,12 +8,7 @@ import { InviteService } from '../../services/invite.service';
     styleUrls: ['./manage-invite.component.scss'],
     templateUrl: './manage-invite.component.html'
 })
-export class ManageInviteComponent {
-    public inviteTypes: Array<string> = [
-        InviteTypes.DAY,
-        InviteTypes.EVENING
-    ];
-
+export class ManageInviteComponent implements OnChanges {
     @Input()
     public invite!: InviteSchema;
 
@@ -38,7 +33,7 @@ export class ManageInviteComponent {
         crypto.getRandomValues(values);
 
         this.invite.pin = Array.from(values).reduce((pin, value) => {
-            return pin + (value % 36).toString(36)
+            return pin + (value % 36).toString(36);
         }, '');
     }
 

@@ -28,6 +28,6 @@ export class InputOptionComponent {
     }
 
     public onInput(event: Event) {
-        this.valueChange.emit((event.currentTarget as HTMLSelectElement).value);
+        this.valueChange.emit((event.currentTarget as HTMLSelectElement).value || null);
     }
 }

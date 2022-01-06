@@ -7,6 +7,10 @@
         </div>
 
         <div class="field">
+            <aa-guest-type [guestType]="guest.type"></aa-guest-type>
+        </div>
+
+        <div class="field">
             <aa-attending [attending]="guest.attending"></aa-attending>
         </div>
 
@@ -17,7 +21,7 @@
     </summary>
 
     <div class="otherInfo">
-        <div class="field menu" *ngIf="guest.attending" >
+        <div class="field menu" *ngIf="guest.attending && (guest.starter || guest.main || guest.dessert)" >
             <aa-menu [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
         </div>
 

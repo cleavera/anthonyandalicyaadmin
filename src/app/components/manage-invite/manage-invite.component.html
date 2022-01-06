@@ -1,11 +1,4 @@
 <form (submit)="onSubmit($event)">
-    <aa-input-option
-            class="field"
-            label="Invite type"
-            [required]="true"
-            [value]="invite.type"
-            [options]="inviteTypes"
-            (valueChange)="invite.type = $any($event)"></aa-input-option>
     <aa-input-text
             class="field"
             label="Invite number"

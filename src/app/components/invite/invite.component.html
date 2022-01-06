@@ -9,10 +9,6 @@
         <p class="pin">{{invite.pin}}</p>
     </div>
 
-    <div class="field">
-        <aa-invite-type [inviteType]="invite.type"></aa-invite-type>
-    </div>
-
     <div class="actions">
         <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
         <aa-button class="action negative" label="Remove" [disabled]="((guests$ | async)?.length ?? 0) > 0" (activate)="onRemove()"></aa-button>

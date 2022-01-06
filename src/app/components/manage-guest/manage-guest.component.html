@@ -1,6 +1,13 @@
 <form (submit)="onSubmit($event)">
     <aa-input-text class="field" [value]="guest.name" [required]="true" label="Name"
                    (valueChange)="guest.name = $any($event)"></aa-input-text>
+    <aa-input-option
+            class="field"
+            label="Invite type"
+            [required]="true"
+            [value]="guest.type"
+            [options]="guestTypes"
+            (valueChange)="guest.type = $any($event)"></aa-input-option>
     <aa-input-boolean class="field" [value]="guest.attending" label="Attending"
                       (valueChange)="guest.attending = $event"></aa-input-boolean>
     <aa-input-option class="field" [value]="guest.starter" label="Starter" (valueChange)="guest.starter = $event"

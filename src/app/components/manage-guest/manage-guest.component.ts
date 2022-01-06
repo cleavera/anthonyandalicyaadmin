@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Desserts, GuestSchema, InviteSchema, Mains, Starters } from 'anthony-and-alicya-domain';
+import { Desserts, GuestSchema, GuestTypes, InviteSchema, Mains, Starters } from 'anthony-and-alicya-domain';
 
 import { GuestService } from '../../services/guest.service';
 
@@ -9,6 +9,11 @@ import { GuestService } from '../../services/guest.service';
     templateUrl: './manage-guest.component.html'
 })
 export class ManageGuestComponent {
+    public guestTypes: Array<string> = [
+        GuestTypes.DAY,
+        GuestTypes.EVENING
+    ];
+
     public STARTERS: Array<string> = [
         Starters.PORK,
         Starters.TERRINE,

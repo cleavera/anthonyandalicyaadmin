@@ -11,7 +11,7 @@ import { InputBooleanComponent } from './components/input-boolean/input-boolean.
 import { InputOptionComponent } from './components/input-option/input-option.component';
 import { InputTextAreaComponent } from './components/input-text-area/input-text-area.component';
 import { InputTextComponent } from './components/input-text/input-text.component';
-import { InviteTypeComponent } from './components/invite-type/invite-type.component';
+import { GuestTypeComponent } from './components/guest-type/guest-type.component';
 import { InviteComponent } from './components/invite/invite.component';
 import { InvitesComponent } from './components/invites/invites.component';
 import { LineComponent } from './components/line/line.component';
@@ -41,7 +41,7 @@ import { InviteService } from './services/invite.service';
         InputTextComponent,
         InputOptionComponent,
         InputTextAreaComponent,
-        InviteTypeComponent,
+        GuestTypeComponent,
         TranslatePipe,
         AttendingComponent,
         InputBooleanComponent,
