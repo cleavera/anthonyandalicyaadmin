@@ -1,5 +1,11 @@
-<div>
-    <label [for]="id">{{label}}</label>
+<label [for]="id">{{label}}</label>
 
-    <input type="text" [id]="id" [name]="id" [value]="value ?? ''" [required]="required" [readOnly]="readonly" (input)="onInput($event)" />
-</div>
+<input
+        class="field"
+        type="text"
+        [id]="id"
+        [name]="id"
+        [value]="value ?? ''"
+        [required]="required"
+        [readOnly]="readonly"
+        (input)="onInput($event)" />

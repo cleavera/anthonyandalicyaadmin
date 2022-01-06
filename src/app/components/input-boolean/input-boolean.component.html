@@ -1,20 +1,23 @@
-<div>
-    <fieldset>
-        <legend>{{label}}</legend>
+<fieldset [class.focus]="focus">
+    <legend>{{label}}</legend>
 
-        <label>
-            No
-            <input type="radio" [name]="id" [checked]="value === false" (input)="onInput(false)" />
+    <div class="input">
+        <input type="radio" [name]="id" [id]="id + '-no'" [checked]="value === false" (input)="onInput(false)"
+               (focus)="onFocus()" (blur)="onBlur()"/>
+        <label class="no" [for]="id + '-no'">
+            <span class="label">No</span>
         </label>
 
-        <label>
-            Not answered
-            <input type="radio" [name]="id" [checked]="value === null" (input)="onInput(null)" />
+        <input type="radio" [name]="id" [id]="id + '-indeterminate'" [checked]="value === null"
+               (input)="onInput(null)" (focus)="onFocus()" (blur)="onBlur()"/>
+        <label class="indeterminate" [for]="id + '-indeterminate'">
+            <span class="label">Not answered</span>
         </label>
 
-        <label>
-            Yes
-            <input type="radio" [name]="id" [checked]="value === true" (input)="onInput(true)" />
+        <input type="radio" [name]="id" [id]="id + '-yes'" [checked]="value === true" (input)="onInput(true)"
+               (focus)="onFocus()" (blur)="onBlur()"/>
+        <label class="yes" [for]="id + '-yes'">
+            <span class="label">Yes</span>
         </label>
-    </fieldset>
-</div>
+    </div>
+</fieldset>

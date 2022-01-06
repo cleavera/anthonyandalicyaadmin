@@ -1,5 +1,10 @@
-<div>
-    <label [for]="id">{{label}}</label>
+<label [for]="id">{{label}}</label>
 
-    <textarea [id]="id" [name]="id" [value]="value ?? ''" [required]="required" [readOnly]="readonly" (input)="onInput($event)"></textarea>
-</div>
+<textarea
+        class="field"
+        [id]="id"
+        [name]="id"
+        [value]="value ?? ''"
+        [required]="required"
+        [readOnly]="readonly"
+        (input)="onInput($event)"></textarea>

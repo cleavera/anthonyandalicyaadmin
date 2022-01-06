@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'aa-input-boolean',
@@ -15,6 +15,7 @@ export class InputBooleanComponent {
     @Output()
     public valueChange: EventEmitter<boolean | null> = new EventEmitter<boolean | null>();
 
+    public focus: boolean = false;
     public id!: string;
 
     public ngOnInit(): void {
@@ -23,5 +24,13 @@ export class InputBooleanComponent {
 
     public onInput(value: boolean | null) {
         this.valueChange.emit(value);
+    }
+
+    public onFocus(): void {
+        this.focus = true;
+    }
+
+    public onBlur(): void {
+        this.focus = false;
     }
 }

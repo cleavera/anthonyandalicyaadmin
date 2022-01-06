@@ -1,9 +1,24 @@
 <form (submit)="onSubmit($event)">
-    <aa-input-option label="Invite type" [required]="true" [value]="invite.type" [options]="inviteTypes" (valueChange)="invite.type = $any($event)"></aa-input-option>
-    <aa-input-text label="Invite number" [required]="true" [readonly]="true" [value]="invite.inviteNumber.toString(10)"></aa-input-text>
-    <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
-    <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>
+    <aa-input-option
+            class="field"
+            label="Invite type"
+            [required]="true"
+            [value]="invite.type"
+            [options]="inviteTypes"
+            (valueChange)="invite.type = $any($event)"></aa-input-option>
+    <aa-input-text
+            class="field"
+            label="Invite number"
+            [required]="true"
+            [readonly]="true"
+            [value]="invite.inviteNumber.toString(10)"></aa-input-text>
+    <div class="field">
+        <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
+        <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>
+    </div>
 
-    <button type="submit">Save</button>
-    <button type="button" (click)="onCancel()">Cancel</button>
+    <div class="actions">
+        <button type="submit">Save</button>
+        <button type="button" (click)="onCancel()">Cancel</button>
+    </div>
 </form>

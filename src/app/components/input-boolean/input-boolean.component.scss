@@ -1,0 +1,81 @@
+:host {
+  display: block;
+}
+
+fieldset.focus .input {
+  outline: 3px solid blue;
+}
+
+.yes {
+  --aa-inputBoolean-color: var(--color-positive);
+  color: var(--color-font--invert);
+
+  &::before {
+    content: '✓';
+    display: none;
+  }
+}
+
+.indeterminate {
+  --aa-inputBoolean-color: var(--color-neutral);
+  color: var(--color-font);
+
+  &::before {
+    content: 'o';
+    display: none;
+  }
+}
+
+.no {
+  --aa-inputBoolean-color: var(--color-negative);
+  color: var(--color-font--invert);
+
+  &::before {
+    content: '✗';
+    display: none;
+  }
+}
+
+.input {
+  display: inline-flex;
+  margin: 4px;
+}
+
+label {
+  align-items: center;
+  background: var(--aa-inputBoolean-color);
+  display: flex;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+}
+
+input,
+.label {
+  clip-path: circle(1, -2px);
+  display: block !important;
+  left: -9999px !important;
+  position: absolute !important;
+  top: -9999px !important;
+}
+
+input:checked + label {
+  outline: 4px solid var(--aa-inputBoolean-color);
+  z-index: 1;
+
+  &::before {
+    display: inline;
+  }
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-size: 0.8rem;
+  margin: 0;
+  padding: 0;
+}
