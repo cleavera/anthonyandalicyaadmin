@@ -13,6 +13,7 @@
   --color-greyDolphin: #aaaaaa;
   --color-green: #228B22;
   --color-red: #8B2222;
+  --color-blue: #22228B;
 
   --color-positive: var(--color-green);
   --color-negative: var(--color-red);
@@ -35,6 +36,8 @@
   --color-notAnswered: var(--color-neutral);
   --color-notAttending: var(--color-negative);
   --color-attending: var(--color-positive);
+  --color-day: var(--color-green);
+  --color-evening: var(--color-blue);
 
   --aaLine-animation-length: 2s;
 
@@ -51,4 +54,8 @@ body {
   font-size: var(--fontSize-body);
   margin: 0;
   padding: 0;
+}
+
+p {
+  margin: 0;
 }

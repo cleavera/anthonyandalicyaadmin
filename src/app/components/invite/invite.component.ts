@@ -21,6 +21,7 @@ export class InviteComponent {
 
     public guests$!: Observable<Array<Observable<GuestSchema | null>>>;
     public managingModel: GuestSchema | null = null;
+    public openActions: boolean = false;
     private _guestService: GuestService;
 
     constructor(guestService: GuestService) {
@@ -34,14 +35,18 @@ export class InviteComponent {
     }
 
     public onEdit(): void {
+        this.closeActionsMenu();
         this.edit.emit();
     }
 
     public onRemove(): void {
+        this.closeActionsMenu();
         this.remove.emit();
     }
 
     public onAddGuest(): void {
+        this.closeActionsMenu();
+
         this.managingModel = this._guestService.blank();
     }
 
@@ -50,6 +55,8 @@ export class InviteComponent {
     }
 
     public onRemoveGuest(guest: GuestSchema): void {
+        this.closeActionsMenu();
+
         if (!confirm('Are you sure you want to remove this, it cannot be undone?')) {
             return;
         }
@@ -59,5 +66,13 @@ export class InviteComponent {
 
     public onClose(): void {
         this.managingModel = null;
+    }
+
+    public openActionsMenu(): void {
+        this.openActions = true;
+    }
+
+    public closeActionsMenu(): void {
+        this.openActions = false;
     }
 }

@@ -1,6 +1,10 @@
 <form (submit)="onSubmit($event)">
-    <aa-input-text class="field" [value]="guest.name" [required]="true" label="Name"
-                   (valueChange)="guest.name = $any($event)"></aa-input-text>
+    <aa-input-text
+            class="field"
+            [value]="guest.name"
+            [required]="true"
+            label="Name"
+            (valueChange)="guest.name = $any($event)"></aa-input-text>
     <aa-input-option
             class="field"
             label="Invite type"
@@ -8,16 +12,34 @@
             [value]="guest.type"
             [options]="guestTypes"
             (valueChange)="guest.type = $any($event)"></aa-input-option>
-    <aa-input-boolean class="field" [value]="guest.attending" label="Attending"
-                      (valueChange)="guest.attending = $event"></aa-input-boolean>
-    <aa-input-option class="field" [value]="guest.starter" label="Starter" (valueChange)="guest.starter = $event"
-                     [options]="STARTERS"></aa-input-option>
-    <aa-input-option class="field" [value]="guest.main" label="Main" (valueChange)="guest.main = $event"
-                     [options]="MAINS"></aa-input-option>
-    <aa-input-option class="field" [value]="guest.dessert" label="Dessert" (valueChange)="guest.dessert = $event"
-                     [options]="DESSERTS"></aa-input-option>
-    <aa-input-text-area class="field" [value]="guest.comments" label="Comments"
-                        (valueChange)="guest.comments = $event"></aa-input-text-area>
+    <aa-input-boolean
+            class="field"
+            [value]="guest.attending"
+            label="Attending"
+            (valueChange)="guest.attending = $event"></aa-input-boolean>
+    <aa-input-option
+            class="field"
+            [value]="guest.starter"
+            label="Starter"
+            (valueChange)="guest.starter = $event"
+            [options]="STARTERS"></aa-input-option>
+    <aa-input-option
+            class="field"
+            [value]="guest.main"
+            label="Main"
+            (valueChange)="guest.main = $event"
+            [options]="MAINS"></aa-input-option>
+    <aa-input-option
+            class="field"
+            [value]="guest.dessert"
+            label="Dessert"
+            (valueChange)="guest.dessert = $event"
+            [options]="DESSERTS"></aa-input-option>
+    <aa-input-text-area
+            class="field"
+            [value]="guest.comments"
+            label="Comments"
+            (valueChange)="guest.comments = $event"></aa-input-text-area>
 
     <div class="actions">
         <aa-button class="action positive" label="Save" type="submit"></aa-button>

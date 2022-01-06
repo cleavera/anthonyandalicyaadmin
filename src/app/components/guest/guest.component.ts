@@ -18,6 +18,7 @@ export class GuestComponent {
     @Output()
     public remove: EventEmitter<void> = new EventEmitter<void>();
 
+    public openActions: boolean = false;
     private _guestService: GuestService;
 
     constructor(guestService: GuestService) {
@@ -25,10 +26,20 @@ export class GuestComponent {
     }
 
     public onEdit(): void {
+        this.closeActionsMenu()
         this.edit.emit();
     }
 
     public onRemove(): void {
+        this.closeActionsMenu()
         this.remove.emit();
+    }
+
+    public openActionsMenu(): void {
+        this.openActions = true;
+    }
+
+    public closeActionsMenu(): void {
+        this.openActions = false;
     }
 }

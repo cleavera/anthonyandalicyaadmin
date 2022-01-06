@@ -6,7 +6,11 @@
             [readonly]="true"
             [value]="invite.inviteNumber.toString(10)"></aa-input-text>
     <div class="field">
-        <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
+        <aa-input-text
+                label="Invite pin"
+                [required]="true"
+                [readonly]="true"
+                [value]="invite.pin"></aa-input-text>
         <aa-button class="action" label="Regenerate pin" (activate)="onRegeneratePin()"></aa-button>
     </div>
 

@@ -1,0 +1,24 @@
+.guestType-day,
+.guestType-evening {
+  align-items: center;
+  display: flex;
+  padding: 5px;
+
+  &::before {
+    background: var(--aa-type-color);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 20px;
+    margin-right: 10px;
+    width: 20px;
+  }
+}
+
+.guestType-day {
+  --aa-type-color: var(--color-day);
+}
+
+.guestType-evening {
+  --aa-type-color: var(--color-evening);
+}

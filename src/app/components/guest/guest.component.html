@@ -15,8 +15,13 @@
         </div>
 
         <div class="actions">
-            <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
-            <aa-button class="action negative" label="Remove" (activate)="onRemove()"></aa-button>
+            <aa-button class="action" label="Actions" (activate)="openActionsMenu()"></aa-button>
+
+            <aa-modal *ngIf="openActions">
+                <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
+                <aa-button class="action negative" label="Remove" (activate)="onRemove()"></aa-button>
+                <aa-button class="action" label="Close" (activate)="closeActionsMenu()"></aa-button>
+            </aa-modal>
         </div>
     </summary>
 
