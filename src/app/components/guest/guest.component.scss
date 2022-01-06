@@ -1,0 +1,25 @@
+:host {
+  align-items: center;
+  background-color: var(--color-card);
+  border-left: 1rem solid var(--color-guest);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media screen and (min-width: 800px) {
+    padding: 2rem;
+  }
+}
+
+.field {
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.action {
+  margin: 10px 0;
+}

@@ -1,0 +1,19 @@
+.invites {
+  list-style: none;
+  margin: 1rem;
+  padding: 0;
+
+  @media screen and (min-width: 800px) {
+    margin: 2rem;
+  }
+}
+
+.invite {
+  & + & {
+    margin-top: 1rem;
+
+    @media screen and (min-width: 800px) {
+      margin-top: 2rem;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+:host {
+  box-shadow: 0 0 10px var(--color-shadow);
+  display: block;
+}
+
+.invite {
+  align-items: center;
+  background-color: var(--color-card);
+  border-left: 1rem solid var(--color-invite);
+  display: flex;
+  padding: 1rem;
+
+  @media screen and (min-width: 800px) {
+    padding: 2rem;
+  }
+}
+
+.field {
+  flex: 1 0 30%;
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+}
+
+.action {
+  margin: 10px 0;
+}
+
+.label {
+  font-size: 0.8rem;
+}
+
+p {
+  margin: 0;
+}

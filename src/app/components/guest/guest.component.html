@@ -1,11 +1,22 @@
-<p class="name">
-    {{guest.name}}
-</p>
+<div class="field">
+    <p class="name">
+        {{guest.name}}
+    </p>
+</div>
 
-<aa-attending [attending]="guest.attending"></aa-attending>
-<aa-menu *ngIf="guest.attending" [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
+<div class="field">
+    <aa-attending [attending]="guest.attending"></aa-attending>
+</div>
 
-<p class="comments">{{guest.comments}}</p>
+<div class="field">
+    <aa-menu *ngIf="guest.attending" [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
+</div>
 
-<button (click)="onEdit()">Edit</button>
-<button (click)="onRemove()">Remove</button>
+<div class="field">
+    <p class="comments">{{guest.comments}}</p>
+</div>
+
+<div class="actions">
+    <button class="action" (click)="onEdit()">Edit</button>
+    <button class="action" (click)="onRemove()">Remove</button>
+</div>

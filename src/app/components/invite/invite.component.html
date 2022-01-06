@@ -1,18 +1,24 @@
-<div>
-    <p class="label">Invite number</p>
-    <p class="inviteNumber">{{invite.inviteNumber}}</p>
+<div class="invite">
+    <div class="field">
+        <p class="label">Invite number</p>
+        <p class="inviteNumber">{{invite.inviteNumber}}</p>
+    </div>
+
+    <div class="field">
+        <p class="label">Pin</p>
+        <p class="pin">{{invite.pin}}</p>
+    </div>
+
+    <div class="field">
+        <aa-invite-type [inviteType]="invite.type"></aa-invite-type>
+    </div>
+
+    <div class="actions">
+        <button class="action" (click)="onEdit()">Edit</button>
+        <button class="action" (click)="onRemove()" [disabled]="((guests$ | async)?.length ?? 0) > 0">Remove</button>
+        <button class="action" (click)="onAddGuest()">Add guest</button>
+    </div>
 </div>
-
-<div>
-    <p class="label">Pin</p>
-    <p class="pin">{{invite.pin}}</p>
-</div>
-
-<aa-invite-type [inviteType]="invite.type"></aa-invite-type>
-
-<button (click)="onEdit()">Edit</button>
-<button (click)="onRemove()" [disabled]="((guests$ | async)?.length ?? 0) > 0">Remove</button>
-<button (click)="onAddGuest()">Add guest</button>
 
 <ng-container *ngIf="(guests$ | async) as guests">
     <aa-guests [guests]="guests" (edit)="onEditGuest($event)" (remove)="onRemoveGuest($event)"></aa-guests>

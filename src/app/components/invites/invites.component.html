@@ -1,5 +1,5 @@
-<ul *ngIf="invites">
-    <li *ngFor="let invite of invites">
+<ul *ngIf="invites" class="invites">
+    <li *ngFor="let invite of invites" class="invite">
         <aa-invite [invite]="invite" (edit)="onEdit(invite)" (remove)="onRemove(invite)"></aa-invite>
     </li>
 </ul>

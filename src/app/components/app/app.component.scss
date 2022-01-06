@@ -12,11 +12,17 @@
   --color-whiteIvory: #f0f0f0;
 
   --color-background: var(--color-whiteIvory);
-  --color-card: var(--color-burgundy);
-  --color-dividers: var(--color-whiteIvory);
+  --color-card: var(--color-white);
+  --color-dividers: var(--color-mintGreen);
+  --color-dividers--invert: var(--color-whiteIvory);
   --color-font-title: var(--color-whiteIvory);
   --color-link: var(--color-burgundy);
   --color-link--hover: var(--color-duskyPink);
+  --color-shadow: var(--color-burgundy);
+  --color-topBar: var(--color-burgundy);
+  --color-topBar-lines: var(--color-dividers--invert);
+  --color-invite: var(--color-duskyPink);
+  --color-guest: var(--color-mintGreen);
 
   --aaLine-animation-length: 2s;
 

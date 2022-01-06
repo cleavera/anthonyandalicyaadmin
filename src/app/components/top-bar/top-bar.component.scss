@@ -1,6 +1,6 @@
 :host {
-  background: var(--color-card);
-  box-shadow: 0 5px 10px var(--color-shadow);
+  background: var(--color-topBar);
+  box-shadow: 0 0 10px var(--color-shadow);
   display: flex;
   justify-content: center;
   padding: 10px 0;
@@ -35,6 +35,7 @@
 }
 
 .line {
+  --aaLine-color: var(--color-topBar-lines);
   flex: 0 1 100px;
   margin: 0;
 }
