@@ -1,0 +1,20 @@
+<div>
+    <fieldset>
+        <legend>{{label}}</legend>
+
+        <label>
+            No
+            <input type="radio" [name]="id" [checked]="value === false" (input)="onInput(false)" />
+        </label>
+
+        <label>
+            Not answered
+            <input type="radio" [name]="id" [checked]="value === null" (input)="onInput(null)" />
+        </label>
+
+        <label>
+            Yes
+            <input type="radio" [name]="id" [checked]="value === true" (input)="onInput(true)" />
+        </label>
+    </fieldset>
+</div>

@@ -1,4 +1,14 @@
-{{invite.inviteNumber}} - {{invite.type}}
+<div>
+    <p class="label">Invite number</p>
+    <p class="inviteNumber">{{invite.inviteNumber}}</p>
+</div>
+
+<div>
+    <p class="label">Pin</p>
+    <p class="pin">{{invite.pin}}</p>
+</div>
+
+<aa-invite-type [inviteType]="invite.type"></aa-invite-type>
 
 <button (click)="onEdit()">Edit</button>
 <button (click)="onRemove()" [disabled]="((guests$ | async)?.length ?? 0) > 0">Remove</button>

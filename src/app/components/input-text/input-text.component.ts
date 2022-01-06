@@ -10,7 +10,7 @@ export class InputTextComponent {
     public label!: string;
 
     @Input()
-    public value!: string;
+    public value!: string | null;
 
     @Input()
     public required!: boolean;
@@ -19,7 +19,7 @@ export class InputTextComponent {
     public readonly!: boolean;
 
     @Output()
-    public valueChange: EventEmitter<string> = new EventEmitter<string>();
+    public valueChange: EventEmitter<string | null> = new EventEmitter<string | null>();
 
     public id!: string;
 

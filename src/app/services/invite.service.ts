@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
-import { Api } from '@skimp/client';
-import { MODEL_REGISTER, ResourceLocation } from '@skimp/core';
+import { Api, Model } from '@skimp/client';
+import { ResourceLocation } from '@skimp/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -37,7 +37,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
 
     public async save(invite: InviteSchema): Promise<void> {
         await this._api.save(invite);
-        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(invite);
+        const location: ResourceLocation | null = Model.getLocation(invite);
 
         if (location === null) {
             throw new Error(`No location for invite ${invite.inviteNumber}`);
@@ -48,7 +48,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
     }
 
     public async remove(invite: InviteSchema): Promise<void> {
-        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(invite);
+        const location: ResourceLocation | null = Model.getLocation(invite);
 
         if (location === null) {
             throw new Error(`No location for invite ${invite.inviteNumber}`);
@@ -65,7 +65,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
 
         invite.inviteNumber = this._generateInviteNumber();
 
-        MODEL_REGISTER.setLocation(invite, new ResourceLocation('invite', invite.inviteNumber.toString()));
+        Model.setLocation(invite, new ResourceLocation('invite', invite.inviteNumber.toString()));
 
         return invite;
     }

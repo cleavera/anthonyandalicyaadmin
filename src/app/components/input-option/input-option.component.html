@@ -3,6 +3,6 @@
 
     <select [name]="id" [id]="id" (input)="onInput($event)" [required]="required">
         <option></option>
-        <option *ngFor="let option of options" [value]="option" [selected]="value === option">{{option}}</option>
+        <option *ngFor="let option of options" [value]="option" [selected]="value === option">{{option | translate}}</option>
     </select>
 </div>

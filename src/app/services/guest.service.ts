@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Api, Model } from '@skimp/client';
-import { MODEL_REGISTER, ResourceLocation } from '@skimp/core';
+import { ResourceLocation } from '@skimp/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -74,7 +74,7 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
 
         Model.addRelationship(invite, guest);
 
-        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(guest);
+        const location: ResourceLocation | null = Model.getLocation(guest);
 
         if (location === null) {
             throw new Error(`No location for guest ${guest.name}`);
@@ -86,14 +86,14 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
     }
 
     public async remove(guest: GuestSchema, invite: InviteSchema): Promise<void> {
-        const location: ResourceLocation | null = MODEL_REGISTER.getLocation(guest);
+        const location: ResourceLocation | null = Model.getLocation(guest);
 
         if (location === null) {
             throw new Error(`No location for guest ${guest.name}`);
         }
 
         await this._api.remove(location);
-        MODEL_REGISTER.removeRelationship(invite, location);
+        Model.removeRelationship(invite, location);
 
         await this._get(location).next(null);
         await this.loadForInvite(invite)

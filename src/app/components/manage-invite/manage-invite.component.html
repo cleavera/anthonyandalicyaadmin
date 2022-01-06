@@ -1,5 +1,5 @@
 <form (submit)="onSubmit($event)">
-    <aa-input-option label="Invite type" [required]="true" [value]="invite.type" [options]="inviteTypes" (valueChange)="invite.type = $event"></aa-input-option>
+    <aa-input-option label="Invite type" [required]="true" [value]="invite.type" [options]="inviteTypes" (valueChange)="invite.type = $any($event)"></aa-input-option>
     <aa-input-text label="Invite number" [required]="true" [readonly]="true" [value]="invite.inviteNumber.toString(10)"></aa-input-text>
     <aa-input-text label="Invite pin" [required]="true" [readonly]="true" [value]="invite.pin"></aa-input-text>
     <button (click)="onRegeneratePin()" type="button">Regenerate pin</button>

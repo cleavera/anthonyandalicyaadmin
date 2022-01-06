@@ -1,4 +1,8 @@
-{{guest.name}}
+<p class="name">
+    {{guest.name}}
+</p>
+
+<aa-attending [attending]="guest.attending"></aa-attending>
 
 <button (click)="onEdit()">Edit</button>
 <button (click)="onRemove()">Remove</button>
