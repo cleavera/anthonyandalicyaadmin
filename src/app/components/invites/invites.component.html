@@ -6,4 +6,6 @@
 
 <button (click)="onAdd()">Add new invite</button>
 
-<aa-manage-invite *ngIf="managingModel" [invite]="managingModel" (close)="onClose()"></aa-manage-invite>
+<aa-modal *ngIf="managingModel" >
+    <aa-manage-invite [invite]="managingModel" (close)="onClose()"></aa-manage-invite>
+</aa-modal>

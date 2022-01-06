@@ -49,4 +49,8 @@ export class ManageInviteComponent {
 
         this.close.emit();
     }
+
+    public onCancel(): void {
+        this.close.emit();
+    }
 }

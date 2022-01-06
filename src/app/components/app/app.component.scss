@@ -10,6 +10,13 @@
   --color-mintGreen: #adb8ae;
   --color-white: #fdfdfd;
   --color-whiteIvory: #f0f0f0;
+  --color-greyDolphin: #aaaaaa;
+  --color-green: #228B22;
+  --color-red: #8B2222;
+
+  --color-positive: var(--color-green);
+  --color-negative: var(--color-red);
+  --color-neutral: var(--color-greyDolphin);
 
   --color-background: var(--color-whiteIvory);
   --color-card: var(--color-white);
@@ -23,6 +30,9 @@
   --color-topBar-lines: var(--color-dividers--invert);
   --color-invite: var(--color-duskyPink);
   --color-guest: var(--color-mintGreen);
+  --color-notAnswered: var(--color-neutral);
+  --color-notAttending: var(--color-negative);
+  --color-attending: var(--color-positive);
 
   --aaLine-animation-length: 2s;
 

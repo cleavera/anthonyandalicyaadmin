@@ -1,7 +1,10 @@
-:host {
-  align-items: center;
+details {
   background-color: var(--color-card);
   border-left: 1rem solid var(--color-guest);
+}
+
+summary {
+  align-items: center;
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -12,14 +15,33 @@
 }
 
 .field {
+  flex: 1 1 40%;
   margin-right: 10px;
 }
 
 .actions {
   display: flex;
+  flex: 0 0 auto;
   flex-direction: column;
 }
 
 .action {
   margin: 10px 0;
+}
+
+.otherInfo {
+  background: var(--color-guest);
+
+  &:not(:empty) {
+    padding: 1rem;
+
+    @media screen and (min-width: 800px) {
+      padding: 2rem;
+    }
+  }
+}
+
+.label,
+.comments {
+  font-size: 0.8rem;
 }

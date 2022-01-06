@@ -24,4 +24,6 @@
     <aa-guests [guests]="guests" (edit)="onEditGuest($event)" (remove)="onRemoveGuest($event)"></aa-guests>
 </ng-container>
 
-<aa-manage-guest [invite]="invite" [guest]="managingModel" *ngIf="managingModel" (close)="onClose()"></aa-manage-guest>
+<aa-modal *ngIf="managingModel">
+    <aa-manage-guest [invite]="invite" [guest]="managingModel" (close)="onClose()"></aa-manage-guest>
+</aa-modal>

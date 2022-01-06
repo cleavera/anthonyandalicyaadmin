@@ -7,4 +7,5 @@
     <aa-input-text-area [value]="guest.comments" label="Comments" (valueChange)="guest.comments = $event"></aa-input-text-area>
 
     <button type="submit">Save</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
 </form>

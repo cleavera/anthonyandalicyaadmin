@@ -17,6 +17,7 @@ import { LineComponent } from './components/line/line.component';
 import { ManageGuestComponent } from './components/manage-guest/manage-guest.component';
 import { ManageInviteComponent } from './components/manage-invite/manage-invite.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { PageComponent } from './components/page/page.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { TranslatePipe } from './pipes/translate.pipe';
@@ -43,7 +44,8 @@ import { InviteService } from './services/invite.service';
         TranslatePipe,
         AttendingComponent,
         InputBooleanComponent,
-        MenuComponent
+        MenuComponent,
+        ModalComponent
     ],
     imports: [
         BrowserModule,
