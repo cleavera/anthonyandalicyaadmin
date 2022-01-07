@@ -1,0 +1,21 @@
+.loading {
+  --aaLine-color: currentColor;
+  color: var(--color-burgundy);
+  font-family: var(--fontFamily-title);
+  font-size: 2rem;
+  max-width: 100%;
+  width: 200px;
+}
+
+:host {
+  align-items: center;
+  background: var(--color-backdrop);
+  bottom: 0;
+  display: flex;
+  //filter: blur(10px);
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}

@@ -15,6 +15,7 @@ import { GuestTypeComponent } from './components/guest-type/guest-type.component
 import { InviteComponent } from './components/invite/invite.component';
 import { InvitesComponent } from './components/invites/invites.component';
 import { LineComponent } from './components/line/line.component';
+import { LoadingComponent } from './components/loading/loading.component';
 import { ManageGuestComponent } from './components/manage-guest/manage-guest.component';
 import { ManageInviteComponent } from './components/manage-invite/manage-invite.component';
 import { MenuComponent } from './components/menu/menu.component';
@@ -23,8 +24,10 @@ import { PageComponent } from './components/page/page.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { API_PROVIDER } from './providers/api/api.provider';
+import { LOADING_SERVICE_PROVIDER } from './providers/loading-service/loading-service.provider';
 import { GuestService } from './services/guest.service';
 import { InviteService } from './services/invite.service';
+import { LoadingService } from './services/loading.service';
 
 @NgModule({
     declarations: [
@@ -47,7 +50,8 @@ import { InviteService } from './services/invite.service';
         InputBooleanComponent,
         MenuComponent,
         ModalComponent,
-        ButtonComponent
+        ButtonComponent,
+        LoadingComponent
     ],
     imports: [
         BrowserModule,
@@ -56,6 +60,7 @@ import { InviteService } from './services/invite.service';
     providers: [
         API_PROVIDER,
         GuestService,
+        LOADING_SERVICE_PROVIDER,
         InviteService
     ],
     bootstrap: [AppComponent]

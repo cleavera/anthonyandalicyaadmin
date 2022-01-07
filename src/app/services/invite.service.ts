@@ -4,6 +4,7 @@ import { ResourceLocation } from '@skimp/core';
 import { InviteSchema } from 'anthony-and-alicya-domain';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
+import { Loading } from '../decorators/loading.decorator';
 import { RepositoryInterface } from '../interfaces/repository.interface';
 import { API_TOKEN } from '../providers/api/api.token';
 
@@ -27,14 +28,17 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
         return this._get(location).asObservable();
     }
 
+    @Loading
     public async loadAll(): Promise<void> {
         this._listSubject.next(await this._api.list(InviteSchema));
     }
 
+    @Loading
     public async load(location: ResourceLocation): Promise<void> {
         this._get(location).next(await this._api.get(InviteSchema, location));
     }
 
+    @Loading
     public async save(invite: InviteSchema): Promise<void> {
         await this._api.save(invite);
         const location: ResourceLocation | null = Model.getLocation(invite);
@@ -47,6 +51,7 @@ export class InviteService implements RepositoryInterface<InviteSchema> {
         await this.loadAll();
     }
 
+    @Loading
     public async remove(invite: InviteSchema): Promise<void> {
         const location: ResourceLocation | null = Model.getLocation(invite);
 

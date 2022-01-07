@@ -3,6 +3,7 @@ import { Api, Model } from '@skimp/client';
 import { ResourceLocation } from '@skimp/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Loading } from '../decorators/loading.decorator';
 
 import { RepositoryInterface } from '../interfaces/repository.interface';
 import { API_TOKEN } from '../providers/api/api.token';
@@ -36,14 +37,17 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         return this._get(location).asObservable();
     }
 
+    @Loading
     public async loadAll(): Promise<void> {
         this._listSubject.next(await this._api.list(GuestSchema));
     }
 
+    @Loading
     public async load(location: ResourceLocation): Promise<void> {
         this._get(location).next(await this._api.get(GuestSchema, location));
     }
 
+    @Loading
     public async loadForInvite(invite: InviteSchema): Promise<void> {
         const subject: Subject<Array<Observable<GuestSchema | null>>> = this._getForInvite(invite);
         const guests: Array<ResourceLocation> | null = Model.getRelationshipOfType(invite, GuestSchema);
@@ -67,6 +71,7 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         return new GuestSchema();
     }
 
+    @Loading
     public async save(guest: GuestSchema, invite: InviteSchema): Promise<void> {
         Model.addRelationship(guest, invite);
 
@@ -85,6 +90,7 @@ export class GuestService implements RepositoryInterface<GuestSchema> {
         await this.loadAll();
     }
 
+    @Loading
     public async remove(guest: GuestSchema, invite: InviteSchema): Promise<void> {
         const location: ResourceLocation | null = Model.getLocation(guest);
 
