@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { asyncScheduler, BehaviorSubject, debounce, distinct, interval, Observable, throttle, throttleTime } from 'rxjs';
+import { asyncScheduler, BehaviorSubject, Observable, throttleTime } from 'rxjs';
 
 @Injectable()
 export class LoadingService {
@@ -10,8 +10,11 @@ export class LoadingService {
     constructor() {
         this._isLoading = new BehaviorSubject<boolean>(false);
         this.isLoading = this._isLoading.pipe(
-            throttleTime(200, asyncScheduler, { leading: true, trailing: true })
-        )
+            throttleTime(200, asyncScheduler, {
+                leading: true,
+                trailing: true
+            })
+        );
 
         this._promises = [];
     }
@@ -26,6 +29,6 @@ export class LoadingService {
             if (this._promises.length === 0) {
                 this._isLoading.next(false);
             }
-        })
+        });
     }
 }
