@@ -30,8 +30,8 @@
             <aa-menu [starter]="guest.starter" [main]="guest.main" [dessert]="guest.dessert"></aa-menu>
         </div>
 
-        <div class="field" *ngIf="guest.comments">
-            <p class="label">Message</p>
+        <div class="field dietary" *ngIf="guest.comments">
+            <p class="label">Dietary requirements</p>
             <p class="comments">{{guest.comments}}</p>
         </div>
     </div>

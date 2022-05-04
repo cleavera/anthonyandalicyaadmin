@@ -41,7 +41,9 @@ summary {
   }
 
   .field {
-    & + & {
+    margin-right: 0;
+
+    & + .field {
       margin-top: 1rem;
     }
   }
@@ -54,4 +56,9 @@ summary {
 
 .menu {
   text-align: center;
+}
+
+.dietary {
+  background: var(--color-card);
+  padding: 2rem;
 }
