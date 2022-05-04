@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build-prod": "npm run build -- -- --base-href=/admin/",
+    "deploy": "npm run build-prod && az storage blob upload-batch --account-name anthonyandalicyacouk -d 'admin' -s ./dist --subscription 222fe2da-47fa-4647-ac0b-4ff1c595c87a",
     "build": "ng build",
     "watch": "ng build --watch --configuration development"
   },
