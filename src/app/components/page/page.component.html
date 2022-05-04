@@ -1,5 +1,9 @@
 <aa-top-bar></aa-top-bar>
 
 <div class="content">
-    <aa-invites></aa-invites>
+    <aa-invites *ngIf="(authenticationService.has$ | async) else authenticate"></aa-invites>
+
+    <ng-template #authenticate>
+        <aa-authentication></aa-authentication>
+    </ng-template>
 </div>

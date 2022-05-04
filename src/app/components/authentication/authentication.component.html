@@ -1,0 +1,3 @@
+<aa-input-password class="input" label="Password" [required]="true" (valueChange)="onPasswordChange($event)"></aa-input-password>
+<p class="error" [style.visibility]="incorrect ? 'visible' : 'hidden'">The password supplied was incorrect</p>
+<aa-button class="submit" (click)="onSubmit()" label="Authenticate"></aa-button>

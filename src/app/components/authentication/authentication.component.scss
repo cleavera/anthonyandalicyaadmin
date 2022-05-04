@@ -1,0 +1,22 @@
+.input {
+  margin: 1em 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+.error {
+  color: var(--color-negative);
+  margin: 0;
+}
+
+.submit {
+  margin: 1em 0;
+  max-width: 400px;
+  width: 100%;
+}
+
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
