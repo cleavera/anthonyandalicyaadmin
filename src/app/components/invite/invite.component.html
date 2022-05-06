@@ -22,7 +22,7 @@
 </div>
 
 <ng-container *ngIf="(guests$ | async) as guests">
-    <aa-guests [guests]="guests" (edit)="onEditGuest($event)" (remove)="onRemoveGuest($event)"></aa-guests>
+    <aa-guests [guests]="guests" (edit)="onEditGuest($event)" (remove)="onRemoveGuest($event)" (hasGuests)="onHidingGuests($event)"></aa-guests>
 </ng-container>
 
 <aa-modal *ngIf="managingModel">

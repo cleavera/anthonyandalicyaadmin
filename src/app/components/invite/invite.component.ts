@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
 import { Observable } from 'rxjs';
 
@@ -18,6 +18,9 @@ export class InviteComponent {
 
     @Output()
     public remove: EventEmitter<void> = new EventEmitter<void>();
+
+    @HostBinding('hidden')
+    public hidden: boolean = false;
 
     public guests$!: Observable<Array<Observable<GuestSchema | null>>>;
     public managingModel: GuestSchema | null = null;
@@ -74,5 +77,9 @@ export class InviteComponent {
 
     public closeActionsMenu(): void {
         this.openActions = false;
+    }
+
+    public onHidingGuests(hasShowingGuests: boolean): void {
+        this.hidden = !hasShowingGuests;
     }
 }

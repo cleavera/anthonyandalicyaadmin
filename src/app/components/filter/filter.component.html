@@ -1,0 +1,20 @@
+<aa-button [ngClass]="{ 'positive': filterApplied }" label="Filters" (activate)="openFilterMenu()"></aa-button>
+
+<aa-modal *ngIf="openFilter">
+    <aa-input-boolean
+            label="Attending"
+            [value]="attendanceFilterService.attendingFilter | async"
+            [required]="true"
+            (valueChange)="attendingFilterChange($event)"></aa-input-boolean>
+    <aa-input-boolean
+            label="Not answered"
+            [value]="attendanceFilterService.notRespondedFilter | async"
+            [required]="true"
+            (valueChange)="notAnsweredFilterChange($event)"></aa-input-boolean>
+    <aa-input-boolean
+            label="Not attending"
+            [value]="attendanceFilterService.notAttendingFilter | async"
+            [required]="true"
+            (valueChange)="notAttendingFilterChange($event)"></aa-input-boolean>
+    <aa-button label="Close" (activate)="closeFilterMenu()"></aa-button>
+</aa-modal>

@@ -1,5 +1,8 @@
 <div class="actions">
-    <p class="count">{{invites?.length || 0}} invites</p>
+    <div class="filters">
+        <p class="count">{{invites?.length || 0}} invites</p>
+        <aa-filter></aa-filter>
+    </div>
 
     <aa-button label="Add new invite" (activate)="onAdd()"></aa-button>
 </div>

@@ -6,6 +6,7 @@ import { AppComponent } from './components/app/app.component';
 import { AttendingComponent } from './components/attending/attending.component';
 import { AuthenticationComponent } from './components/authentication/authentication.component';
 import { ButtonComponent } from './components/button/button.component';
+import { FilterComponent } from './components/filter/filter.component';
 import { GuestTypeComponent } from './components/guest-type/guest-type.component';
 import { GuestComponent } from './components/guest/guest.component';
 import { GuestsComponent } from './components/guests/guests.component';
@@ -27,6 +28,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { TranslatePipe } from './pipes/translate.pipe';
 import { API_PROVIDER } from './providers/api/api.provider';
 import { LOADING_SERVICE_PROVIDER } from './providers/loading-service/loading-service.provider';
+import { AttendanceFilterService } from './services/attendance-filter.service';
 import { AuthenticationService } from './services/authentication.service';
 import { GuestService } from './services/guest.service';
 import { InviteService } from './services/invite.service';
@@ -55,7 +57,8 @@ import { InviteService } from './services/invite.service';
         MenuComponent,
         ModalComponent,
         ButtonComponent,
-        LoadingComponent
+        LoadingComponent,
+        FilterComponent
     ],
     imports: [
         BrowserModule,
@@ -63,6 +66,7 @@ import { InviteService } from './services/invite.service';
     ],
     providers: [
         API_PROVIDER,
+        AttendanceFilterService,
         AuthenticationService,
         GuestService,
         LOADING_SERVICE_PROVIDER,

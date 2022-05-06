@@ -12,6 +12,9 @@ export class InputBooleanComponent {
     @Input()
     public value!: boolean | null;
 
+    @Input()
+    public required: boolean = false;
+
     @Output()
     public valueChange: EventEmitter<boolean | null> = new EventEmitter<boolean | null>();
 
