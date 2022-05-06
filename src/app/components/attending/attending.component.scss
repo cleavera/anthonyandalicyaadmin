@@ -5,6 +5,10 @@
   display: flex;
   padding: 5px;
 
+  @media screen and (max-width: 800px) {
+    font-size: 0;
+  }
+
   &::before {
     background: var(--aa-attendance-color);
     border-radius: 50%;

@@ -4,6 +4,10 @@
   display: flex;
   padding: 5px;
 
+  @media screen and (max-width: 800px) {
+    font-size: 0;
+  }
+
   &::before {
     background: var(--aa-type-color);
     border-radius: 50%;

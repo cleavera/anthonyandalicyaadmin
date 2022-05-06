@@ -14,6 +14,7 @@
   --color-green: #228B22;
   --color-red: #8B2222;
   --color-blue: #22228B;
+  --color-yellow: #dddd22;
 
   --color-positive: var(--color-green);
   --color-negative: var(--color-red);
@@ -36,7 +37,7 @@
   --color-notAnswered: var(--color-neutral);
   --color-notAttending: var(--color-negative);
   --color-attending: var(--color-positive);
-  --color-day: var(--color-green);
+  --color-day: var(--color-yellow);
   --color-evening: var(--color-blue);
   --color-backdrop: rgba(200, 200, 200, 0.4);
 
