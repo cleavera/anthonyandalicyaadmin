@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { InviteSchema } from 'anthony-and-alicya-domain';
-import { delay, merge } from 'rxjs';
+import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
+import { delay, firstValueFrom, lastValueFrom, merge } from 'rxjs';
 
 import { AttendanceFilterService } from '../../services/attendance-filter.service';
+import { DownloadService } from '../../services/download.service';
+import { ExportService } from '../../services/export.service';
+import { GuestService } from '../../services/guest.service';
 import { InviteService } from '../../services/invite.service';
 import { LoadingService } from '../../services/loading.service';
 
@@ -19,11 +22,17 @@ export class InvitesComponent implements OnInit {
     private _invitesService: InviteService;
     private _loadingService: LoadingService;
     private _attendanceFilter: AttendanceFilterService;
+    private _exportService: ExportService;
+    private _guestService: GuestService;
+    private _downloadService: DownloadService;
 
-    constructor(invitesService: InviteService, loadingService: LoadingService, attendanceFilter: AttendanceFilterService) {
+    constructor(invitesService: InviteService, guestService: GuestService, loadingService: LoadingService, attendanceFilter: AttendanceFilterService, exportService: ExportService, downloadService: DownloadService) {
+        this._guestService = guestService;
         this._invitesService = invitesService;
         this._loadingService = loadingService;
         this._attendanceFilter = attendanceFilter;
+        this._exportService = exportService;
+        this._downloadService = downloadService;
     }
 
     public async ngOnInit(): Promise<void> {
@@ -41,6 +50,17 @@ export class InvitesComponent implements OnInit {
         });
 
         await this._invitesService.loadAll();
+    }
+
+    public async onExport(): Promise<void> {
+        let guests: Array<GuestSchema> = [];
+
+        this._guestService.getAll().subscribe((emittedGuests: Array<GuestSchema>) => {
+            guests = emittedGuests;
+        });
+
+        await this._guestService.loadAll();
+        this._downloadService.fromContent(this._exportService.asCSV<GuestSchema>(guests, GuestSchema), 'guest-list.csv');
     }
 
     public onAdd(): void {

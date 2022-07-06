@@ -36,3 +36,13 @@
 .guestCount {
   margin-left: 10px;
 }
+
+.actions {
+  align-items: center;
+  display: flex;
+  margin: 0 -10px;
+}
+
+.actions > * {
+  margin: 0 10px;
+}

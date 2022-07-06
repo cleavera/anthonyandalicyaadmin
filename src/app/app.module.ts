@@ -30,6 +30,8 @@ import { API_PROVIDER } from './providers/api/api.provider';
 import { LOADING_SERVICE_PROVIDER } from './providers/loading-service/loading-service.provider';
 import { AttendanceFilterService } from './services/attendance-filter.service';
 import { AuthenticationService } from './services/authentication.service';
+import { DownloadService } from './services/download.service';
+import { ExportService } from './services/export.service';
 import { GuestService } from './services/guest.service';
 import { InviteService } from './services/invite.service';
 
@@ -68,9 +70,12 @@ import { InviteService } from './services/invite.service';
         API_PROVIDER,
         AttendanceFilterService,
         AuthenticationService,
+        DownloadService,
+        ExportService,
         GuestService,
         LOADING_SERVICE_PROVIDER,
-        InviteService
+        InviteService,
+        TranslatePipe
     ],
     bootstrap: [AppComponent]
 })

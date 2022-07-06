@@ -5,7 +5,10 @@
         <p class="guestCount">{{guestCount}} guests</p>
     </div>
 
-    <aa-button label="Add new invite" (activate)="onAdd()"></aa-button>
+    <div class="actions">
+        <aa-button label="Export" (activate)="onExport()"></aa-button>
+        <aa-button label="Add new invite" (activate)="onAdd()"></aa-button>
+    </div>
 </div>
 
 <ul *ngIf="invites" class="invites">
