@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnChanges, Output } from '@angular/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { GuestService } from '../../services/guest.service';
     styleUrls: ['./invite.component.scss'],
     templateUrl: './invite.component.html'
 })
-export class InviteComponent {
+export class InviteComponent implements OnChanges {
     @Input()
     public invite!: InviteSchema;
 
@@ -25,10 +25,12 @@ export class InviteComponent {
     public guests$!: Observable<Array<Observable<GuestSchema | null>>>;
     public managingModel: GuestSchema | null = null;
     public openActions: boolean = false;
+    public canShare: boolean;
     private _guestService: GuestService;
 
     constructor(guestService: GuestService) {
         this._guestService = guestService;
+        this.canShare = !!navigator.share;
     }
 
     public ngOnChanges(): void {
@@ -65,6 +67,20 @@ export class InviteComponent {
         }
 
         this._guestService.remove(guest, this.invite);
+    }
+
+    public async onShare(): Promise<void> {
+        await navigator.share({
+            text: `You are invited to the wedding of Anthony and Alicya.
+            
+Please RSVP via the website.
+https://www.anthonyandalicya.co.uk
+Using the following details:
+Invite number: ${this.invite.inviteNumber}
+PIN: ${this.invite.pin}`
+        });
+
+        this.closeActionsMenu();
     }
 
     public onClose(): void {

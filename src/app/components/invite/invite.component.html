@@ -13,6 +13,7 @@
         <aa-button class="action" label="Actions" (activate)="openActionsMenu()"></aa-button>
 
         <aa-modal *ngIf="openActions">
+            <aa-button class="action" label="Share" (activate)="onShare()" *ngIf="canShare"></aa-button>
             <aa-button class="action" label="Edit" (activate)="onEdit()"></aa-button>
             <aa-button class="action negative" label="Remove" [disabled]="((guests$ | async)?.length ?? 0) > 0" (activate)="onRemove()"></aa-button>
             <aa-button class="action" label="Add guest" (activate)="onAddGuest()"></aa-button>
