@@ -1,7 +1,7 @@
 import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { GuestSchema } from 'anthony-and-alicya-domain';
 
-import { AttendanceFilterService } from '../../services/attendance-filter.service';
+import { GuestFilterService } from '../../services/guest-filter.service';
 import { GuestService } from '../../services/guest.service';
 
 @Component({
@@ -27,17 +27,17 @@ export class GuestComponent implements OnInit {
 
     public openActions: boolean = false;
     private _guestService: GuestService;
-    private _attendanceFilterService: AttendanceFilterService;
+    private _guestFilterService: GuestFilterService;
 
-    constructor(guestService: GuestService, attendanceFilterService: AttendanceFilterService) {
+    constructor(guestService: GuestService, guestFilterService: GuestFilterService) {
         this._guestService = guestService;
-        this._attendanceFilterService = attendanceFilterService;
+        this._guestFilterService = guestFilterService;
         this.hidden = false;
     }
 
     public ngOnInit(): void {
-        this._attendanceFilterService.filterChange.subscribe(() => {
-            this.hidden = !this._attendanceFilterService.evaluate(this.guest);
+        this._guestFilterService.filterChange.subscribe(() => {
+            this.hidden = !this._guestFilterService.evaluate(this.guest);
             this.hide.emit(this.hidden);
         });
     }

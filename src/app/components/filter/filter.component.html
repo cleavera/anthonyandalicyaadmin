@@ -16,5 +16,15 @@
             [value]="attendanceFilterService.notAttendingFilter | async"
             [required]="true"
             (valueChange)="notAttendingFilterChange($event)"></aa-input-boolean>
+    <aa-input-boolean
+            label="Day guests"
+            [value]="guestTypeFilterService.dayFilter | async"
+            [required]="true"
+            (valueChange)="dayGuestFilterChange($event)"></aa-input-boolean>
+    <aa-input-boolean
+            label="Evening guests"
+            [value]="guestTypeFilterService.eveningFilter | async"
+            [required]="true"
+            (valueChange)="eveningGuestFilterChange($event)"></aa-input-boolean>
     <aa-button label="Close" (activate)="closeFilterMenu()"></aa-button>
 </aa-modal>

@@ -32,6 +32,8 @@ import { AttendanceFilterService } from './services/attendance-filter.service';
 import { AuthenticationService } from './services/authentication.service';
 import { DownloadService } from './services/download.service';
 import { ExportService } from './services/export.service';
+import { GuestFilterService } from './services/guest-filter.service';
+import { GuestTypeFilterService } from './services/guest-type-filter.service';
 import { GuestService } from './services/guest.service';
 import { InviteService } from './services/invite.service';
 
@@ -72,6 +74,8 @@ import { InviteService } from './services/invite.service';
         AuthenticationService,
         DownloadService,
         ExportService,
+        GuestFilterService,
+        GuestTypeFilterService,
         GuestService,
         LOADING_SERVICE_PROVIDER,
         InviteService,

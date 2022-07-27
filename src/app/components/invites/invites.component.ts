@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GuestSchema, InviteSchema } from 'anthony-and-alicya-domain';
-import { delay, firstValueFrom, lastValueFrom, merge } from 'rxjs';
-
-import { AttendanceFilterService } from '../../services/attendance-filter.service';
+import { delay, merge } from 'rxjs';
 import { DownloadService } from '../../services/download.service';
 import { ExportService } from '../../services/export.service';
+import { GuestFilterService } from '../../services/guest-filter.service';
 import { GuestService } from '../../services/guest.service';
 import { InviteService } from '../../services/invite.service';
 import { LoadingService } from '../../services/loading.service';
@@ -21,16 +20,16 @@ export class InvitesComponent implements OnInit {
 
     private _invitesService: InviteService;
     private _loadingService: LoadingService;
-    private _attendanceFilter: AttendanceFilterService;
+    private _guestFilterService: GuestFilterService;
     private _exportService: ExportService;
     private _guestService: GuestService;
     private _downloadService: DownloadService;
 
-    constructor(invitesService: InviteService, guestService: GuestService, loadingService: LoadingService, attendanceFilter: AttendanceFilterService, exportService: ExportService, downloadService: DownloadService) {
+    constructor(invitesService: InviteService, guestService: GuestService, loadingService: LoadingService, guestFilterService: GuestFilterService, exportService: ExportService, downloadService: DownloadService) {
         this._guestService = guestService;
         this._invitesService = invitesService;
         this._loadingService = loadingService;
-        this._attendanceFilter = attendanceFilter;
+        this._guestFilterService = guestFilterService;
         this._exportService = exportService;
         this._downloadService = downloadService;
     }
@@ -43,7 +42,7 @@ export class InvitesComponent implements OnInit {
         this.guestCount = 0;
 
         merge(
-            this._attendanceFilter.filterChange,
+            this._guestFilterService.filterChange,
             this._loadingService.isLoading
         ).pipe(delay(1)).subscribe(() => {
             this._updateGuestCount();
